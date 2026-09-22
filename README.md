@@ -5,10 +5,19 @@
 <h1 align="center">VSCodroid</h1>
 
 <p align="center">
-  <strong>VS Code, natively on Android.</strong><br>
+  <strong>An independent Code - OSS refactoring for Android.</strong><br>
   A full-featured IDE on your phone, not a toy editor, not a cloud IDE.<br>
   Download. Open. Code.
 </p>
+
+> [!IMPORTANT]
+>
+> **VSCodroid is an independent fork and refactoring of the upstream Code - OSS
+> project. It is not the original Visual Studio Code, is not an official
+> Microsoft product, and is not affiliated with or endorsed by Microsoft.**
+> This repository adds Android-specific code, patches, branding, packaging, and
+> runtime changes. Upstream source and third-party components remain subject to
+> their own copyrights, trademarks, and licenses.
 
 <p align="center">
   <a href="https://github.com/rmyndharis/VSCodroid/actions/workflows/build.yml"><img src="https://img.shields.io/github/actions/workflow/status/rmyndharis/VSCodroid/build.yml?style=flat-square&logo=github&label=CI" alt="CI"></a>
@@ -313,7 +322,11 @@ If you discover a security vulnerability, please **do not** open a public issue.
 
 ## ⚖️ Legal
 
-VSCodroid is **not affiliated with or endorsed by Microsoft Corporation**.
+VSCodroid is an **independent refactoring and fork**, not a redistribution of
+the original Visual Studio Code product. It is **not affiliated with or endorsed
+by Microsoft Corporation**. The VSCodroid name, Android integration, patches,
+packaging, and project-specific code belong to this project; upstream Code - OSS
+and third-party components retain their original ownership and licenses.
 
 The bundled editor server is built from the MIT-licensed [Code - OSS](https://github.com/microsoft/vscode) source, with this project's Android patches and branding applied before the build. Its licence and third-party notices ship inside the tree, at `android/app/src/main/assets/vscode-reh/LICENSE.txt` and `ThirdPartyNotices.txt`.
 
