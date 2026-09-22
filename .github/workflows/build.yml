@@ -16,7 +16,7 @@ concurrency:
 # workflow permissions happen to be, which is a setting outside this file and
 # outside review. release.yml has said this since it was written.
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -381,6 +381,16 @@ jobs:
           name: debug-apk
           path: android/app/build/outputs/apk/debug/*.apk
           retention-days: 14
+
+      - name: Publish debug APK to GitHub Release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: android/app/build/outputs/apk/debug/*.apk
+          tag_name: debug-${{ github.sha }}
+          name: Debug APK ${{ github.sha }}
+          draft: false
+          prerelease: false
 
   test:
     name: Unit Tests
