@@ -12,6 +12,7 @@ import android.content.ComponentCallbacks2.TRIM_MEMORY_MODERATE
 import android.content.ComponentCallbacks2.TRIM_MEMORY_RUNNING_CRITICAL
 import android.content.ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.graphics.Typeface
 import android.os.Bundle
 import android.net.Uri
@@ -93,6 +94,7 @@ import com.vscodroid.webview.tlsFailureToAnnounce
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+import org.json.JSONTokener
 import kotlin.concurrent.thread
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
@@ -104,11 +106,50 @@ import androidx.core.content.edit
 import androidx.core.net.toUri
 import android.annotation.SuppressLint
 
+private const val INPUT_PREVIEW_INTERVAL_MS = 180L
+private const val INPUT_PREVIEW_SCRIPT = """
+(() => {
+    const element = document.activeElement;
+    if (!element) return "";
+    if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) {
+        return element.value || "";
+    }
+    if (element.isContentEditable) {
+        return element.innerText || element.textContent || "";
+    }
+    return "";
+})()
+"""
+
 class MainActivity : AppCompatActivity() {
     private val tag = "MainActivity"
 
     private var webView: WebView? = null
+    private var inputPreview: TextView? = null
+    private var inputPreviewEnabled = false
+    private val inputPreviewHandler = Handler(Looper.getMainLooper())
     private var extraKeyRow: ExtraKeyRow? = null
+
+    private val inputPreviewPoller = object : Runnable {
+        override fun run() {
+            if (!inputPreviewEnabled) return
+            val currentWebView = webView ?: return
+            currentWebView.evaluateJavascript(INPUT_PREVIEW_SCRIPT) { raw ->
+                if (!inputPreviewEnabled) return@evaluateJavascript
+                val text = runCatching { JSONTokener(raw).nextValue() as? String }
+                    .getOrNull()
+                    .orEmpty()
+                val preview = inputPreview ?: return@evaluateJavascript
+                val show = resources.configuration.orientation ==
+                    Configuration.ORIENTATION_LANDSCAPE && text.isNotEmpty()
+                preview.text = text
+                preview.visibility = if (show) View.VISIBLE else View.GONE
+                if (inputPreviewEnabled) {
+                    inputPreviewHandler.postDelayed(inputPreviewPoller, INPUT_PREVIEW_INTERVAL_MS)
+                }
+            }
+        }
+    }
 
     /**
      * The bound service, or null while nothing is bound.
@@ -1066,6 +1107,9 @@ class MainActivity : AppCompatActivity() {
         // is latched, and a tick already in the looper's queue still runs after
         // this method returns; with the injector left in place it asks a
         // destroyed WebView, which answers by logging and never calling back.
+        inputPreviewEnabled = false
+        inputPreviewHandler.removeCallbacks(inputPreviewPoller)
+        inputPreview = null
         extraKeyRow?.keyInjector = null
         webView?.destroy()
         webView = null
@@ -2167,6 +2211,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupExtraKeyRow() {
+        inputPreview = findViewById(R.id.inputPreview)
         extraKeyRow = findViewById(R.id.extraKeyRow)
         extraKeyRow?.setupWithRootView(findViewById(R.id.webViewContainer))
         // Before the first inset dispatch, so a row the user hid never flashes up
@@ -2176,6 +2221,16 @@ class MainActivity : AppCompatActivity() {
         // is up, which is the one state where moving focus resizes the window.
         extraKeyRow?.onImeVisibilityChanged = { visible ->
             webView?.evaluateJavascript("window.__vscodroidImeVisible = $visible;", null)
+            if (visible) {
+                inputPreviewEnabled = true
+                inputPreviewHandler.removeCallbacks(inputPreviewPoller)
+                inputPreviewHandler.post(inputPreviewPoller)
+            } else {
+                inputPreviewEnabled = false
+                inputPreviewHandler.removeCallbacks(inputPreviewPoller)
+                inputPreview?.text = ""
+                inputPreview?.visibility = View.GONE
+            }
         }
     }
 

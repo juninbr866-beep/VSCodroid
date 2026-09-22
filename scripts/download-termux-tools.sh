@@ -68,6 +68,30 @@ REQUIRED_PACKAGES=(
     # against, and the copyleft half of the tree would reach a device with a
     # dangling link where its licence should be.
     termux-licenses
+    # First practical shell/dev tools for Android terminals. These are small but
+    # highly useful: GitHub auth (`gh`), JSON/text tooling (`jq`), download and
+    # archive support (`wget`, `zip`, `unzip`), file/process inspection (`file`,
+    # `lsof`), and developer ergonomics (`fd`, `fzf`, `ripgrep`). They are all
+    # compatible with the app's Termux-style runtime model without requiring a
+    # full Ubuntu rootfs.
+    gh
+    jq
+    wget
+    zip
+    unzip
+    fd
+    fzf
+    ripgrep
+    file
+    lsof
+    curl
+    openssl
+    git-lfs
+    gpgv
+    rsync
+    ca-certificates
+    cmake
+    clang
 )
 
 # Soname mapping: returns space-separated soname(s) for a package.

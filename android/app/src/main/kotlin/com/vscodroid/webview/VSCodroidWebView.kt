@@ -16,7 +16,9 @@ object VSCodroidWebView {
             domStorageEnabled = true
             @Suppress("DEPRECATION")
             databaseEnabled = true
-            setSupportZoom(false)
+            // Allow pinch-to-zoom for small editor panels and terminal text on phones,
+            // while keeping the floating WebView zoom controls hidden.
+            setSupportZoom(true)
             builtInZoomControls = false
             displayZoomControls = false
             textZoom = 100

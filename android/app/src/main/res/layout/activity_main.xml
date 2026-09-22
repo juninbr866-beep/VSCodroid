@@ -18,6 +18,26 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
+    <!-- Shows the tail of the active input above the keyboard in landscape. -->
+    <TextView
+        android:id="@+id/inputPreview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorExtraKeyBg"
+        android:contentDescription="@string/input_preview_description"
+        android:ellipsize="start"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:minHeight="36dp"
+        android:paddingStart="12dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="6dp"
+        android:singleLine="true"
+        android:textColor="@color/colorOnSurface"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
     <!-- Extra key row: Tab, Esc, Ctrl, Alt, arrows, brackets, etc. -->
     <com.vscodroid.keyboard.ExtraKeyRow
         android:id="@+id/extraKeyRow"
