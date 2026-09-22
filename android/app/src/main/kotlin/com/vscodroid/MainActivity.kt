@@ -130,13 +130,13 @@ class MainActivity : AppCompatActivity() {
     private val inputPreviewHandler = Handler(Looper.getMainLooper())
     private var extraKeyRow: ExtraKeyRow? = null
 
-    private val inputPreviewPoller = object : Runnable {
+    private val inputPreviewPoller: Runnable = object : Runnable {
         override fun run() {
             if (!inputPreviewEnabled) return
             val currentWebView = webView ?: return
             currentWebView.evaluateJavascript(INPUT_PREVIEW_SCRIPT) { raw ->
                 if (!inputPreviewEnabled) return@evaluateJavascript
-                val text = runCatching { JSONTokener(raw).nextValue() as? String }
+                val text: String = runCatching { JSONTokener(raw).nextValue() as? String }
                     .getOrNull()
                     .orEmpty()
                 val preview = inputPreview ?: return@evaluateJavascript
