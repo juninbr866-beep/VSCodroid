@@ -37,8 +37,8 @@ import java.util.concurrent.TimeUnit
  * What happens to Play's copy of a pack after the install has taken what it needs.
  *
  * Play delivers into `filesDir/assetpacks` and keeps the tree until it is asked to
- * drop it, and the tree is a whole toolchain: 155 MB for Java 17 today. Two things
- * were wrong with the asking.
+ * drop it, and the tree is a whole toolchain: about 225 MB for Java 17 today.
+ * Two things were wrong with the asking.
  *
  * `removePack` posts the delete and returns a `Task`; it does not perform it. The
  * caller attached nothing to that task and logged "freed duplicate storage" on the
@@ -344,9 +344,10 @@ class PackReleaseOutcomeTest {
             "the orphan is not the size this case's arithmetic assumes",
         )
 
-        // Strictly between the credited demand (206,000,000 - 8,000,007) and the
-        // uncredited one (206,000,000).
-        room(200_000_000L)
+        val javaBytes = ToolchainRegistry.find("java")!!.estimatedSize
+        val withoutCredit = packInstallBytes(javaBytes)
+        val withCredit = withoutCredit - orphanBytes
+        room((withCredit + withoutCredit) / 2)
         val secondOut = Collections.synchronizedList(mutableListOf<Int>())
         val second = CountDownLatch(1)
         managerReporting(second, secondOut).reconcileDeliveredPacks()

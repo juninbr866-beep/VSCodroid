@@ -820,4 +820,4 @@ For questions about licenses, trademarks, or legal notices:
 
 ---
 
-_This document was last updated on September 18, 2026._
+_This document was last updated on September 23, 2026._
