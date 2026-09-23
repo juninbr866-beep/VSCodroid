@@ -330,7 +330,16 @@ android {
     }
 
     // On-demand toolchain asset packs (Play Asset Delivery)
-    assetPacks += listOf(":toolchain_ruby", ":toolchain_java")
+    assetPacks += listOf(
+        ":toolchain_ruby",
+        ":toolchain_java",
+        ":toolchain_bun",
+        ":toolchain_deno",
+        ":toolchain_zig",
+        ":toolchain_php",
+        ":toolchain_perl",
+        ":toolchain_lua",
+    )
 
     bundle {
         language {

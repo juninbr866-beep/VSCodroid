@@ -24,8 +24,8 @@ class ToolchainRegistryTest {
     inner class CatalogTest {
 
         @Test
-        fun `has exactly 2 toolchains`() {
-            assertEquals(2, ToolchainRegistry.available.size)
+        fun `has exactly 8 toolchains`() {
+            assertEquals(8, ToolchainRegistry.available.size)
         }
 
         @Test
@@ -236,7 +236,7 @@ class ToolchainRegistryTest {
     inner class FindTest {
 
         @ParameterizedTest(name = "find by full pack name: {0}")
-        @ValueSource(strings = ["toolchain_ruby", "toolchain_java"])
+        @ValueSource(strings = ["toolchain_ruby", "toolchain_java", "toolchain_bun", "toolchain_deno", "toolchain_zig", "toolchain_php", "toolchain_perl", "toolchain_lua"])
         fun `finds by full pack name`(packName: String) {
             val result = ToolchainRegistry.find(packName)
             assertNotNull(result, "Should find toolchain by pack name: $packName")
@@ -244,7 +244,7 @@ class ToolchainRegistryTest {
         }
 
         @ParameterizedTest(name = "find by short name: {0} → toolchain_{0}")
-        @CsvSource("ruby,toolchain_ruby", "java,toolchain_java")
+        @CsvSource("ruby,toolchain_ruby", "java,toolchain_java", "bun,toolchain_bun", "deno,toolchain_deno", "zig,toolchain_zig", "php,toolchain_php", "perl,toolchain_perl", "lua,toolchain_lua")
         fun `finds by short name`(shortName: String, expectedPack: String) {
             val result = ToolchainRegistry.find(shortName)
             assertNotNull(result, "Should find toolchain by short name: $shortName")
