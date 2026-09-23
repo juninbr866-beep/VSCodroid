@@ -15,6 +15,7 @@ PERL_PACKAGES=(
 )
 
 LIB_PACKAGES=(
+    termux-licenses
     libandroid-utimes
 )
 

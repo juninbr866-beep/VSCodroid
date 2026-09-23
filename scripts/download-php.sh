@@ -15,39 +15,11 @@ PHP_PACKAGES=(
     php-fpm
     php-gd
     php-imagick
-    php-mysqli
-    php-pdo
-    php-pdo-mysql
-    php-pdo-pgsql
-    php-pdo-sqlite
+    php-ldap
     php-pgsql
     php-redis
-    php-mbstring
-    php-xml
-    php-curl
-    php-openssl
-    php-zip
-    php-intl
-    php-bcmath
-    php-ctype
-    php-dom
-    php-fileinfo
-    php-iconv
-    php-json
-    php-mbstring
-    php-opcache
-    php-pcntl
-    php-phar
-    php-posix
-    php-readline
-    php-session
-    php-simplexml
     php-sodium
-    php-sqlite3
-    php-tokenizer
-    php-xmlreader
-    php-xmlwriter
-    php-zlib
+    php-apcu
 )
 
 LIB_PACKAGES=(
@@ -55,6 +27,7 @@ LIB_PACKAGES=(
     libcurl libffi libgmp libiconv libicu libresolv-wrapper
     libsqlite libxml2 libxslt libzip oniguruma openssl pcre2
     readline tidy zlib
+    termux-licenses
 )
 
 echo "=== Downloading PHP toolchain ==="

@@ -15,6 +15,7 @@ LUA_PACKAGES=(
 )
 
 LIB_PACKAGES=(
+    termux-licenses
     libandroid-support
 )
 

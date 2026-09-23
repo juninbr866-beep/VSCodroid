@@ -156,9 +156,9 @@ object ToolchainRegistry {
             displayName = "PHP",
             shortLabel = "PHP 8.5",
             descriptionRes = R.string.toolchain_php_description,
-            // PHP + extensions + deps ~120 MB installed
+            // PHP + extensions + deps ~224 MB installed (measured)
             // Termux packages total ~80 MB download
-            estimatedSize = 130_000_000,
+            estimatedSize = 230_000_000,
             downloadSize = 85_000_000,
             downloadUrl = "https://github.com/juninbr866-beep/VSCodroid/releases/latest/download/toolchain_php.zip",
         ),
