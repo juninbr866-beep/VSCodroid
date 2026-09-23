@@ -118,6 +118,72 @@ object ToolchainRegistry {
             downloadSize = 56_500_000,
             downloadUrl = "https://github.com/rmyndharis/VSCodroid/releases/latest/download/toolchain_java.zip",
         ),
+        ToolchainInfo(
+            packName = "toolchain_bun",
+            displayName = "Bun",
+            shortLabel = "Bun",
+            descriptionRes = R.string.toolchain_bun_description,
+            // Single binary ~85 MB installed (bun + bunx wrappers)
+            // GitHub release ZIP ~35 MB
+            estimatedSize = 90_000_000,
+            downloadSize = 36_000_000,
+            downloadUrl = "https://github.com/rmyndharis/VSCodroid/releases/latest/download/toolchain_bun.zip",
+        ),
+        ToolchainInfo(
+            packName = "toolchain_deno",
+            displayName = "Deno",
+            shortLabel = "Deno",
+            descriptionRes = R.string.toolchain_deno_description,
+            // Single binary ~95 MB installed
+            // GitHub release ZIP ~38 MB
+            estimatedSize = 100_000_000,
+            downloadSize = 40_000_000,
+            downloadUrl = "https://github.com/rmyndharis/VSCodroid/releases/latest/download/toolchain_deno.zip",
+        ),
+        ToolchainInfo(
+            packName = "toolchain_zig",
+            displayName = "Zig",
+            shortLabel = "Zig",
+            descriptionRes = R.string.toolchain_zig_description,
+            // Binary ~40 MB + stdlib ~350 MB = ~390 MB installed
+            // Release tarball ~130 MB
+            estimatedSize = 400_000_000,
+            downloadSize = 135_000_000,
+            downloadUrl = "https://github.com/rmyndharis/VSCodroid/releases/latest/download/toolchain_zig.zip",
+        ),
+        ToolchainInfo(
+            packName = "toolchain_php",
+            displayName = "PHP",
+            shortLabel = "PHP 8.5",
+            descriptionRes = R.string.toolchain_php_description,
+            // PHP + extensions + deps ~120 MB installed
+            // Termux packages total ~80 MB download
+            estimatedSize = 130_000_000,
+            downloadSize = 85_000_000,
+            downloadUrl = "https://github.com/rmyndharis/VSCodroid/releases/latest/download/toolchain_php.zip",
+        ),
+        ToolchainInfo(
+            packName = "toolchain_perl",
+            displayName = "Perl",
+            shortLabel = "Perl 5.42",
+            descriptionRes = R.string.toolchain_perl_description,
+            // Perl + modules ~70 MB installed
+            // Termux packages ~30 MB download
+            estimatedSize = 75_000_000,
+            downloadSize = 32_000_000,
+            downloadUrl = "https://github.com/rmyndharis/VSCodroid/releases/latest/download/toolchain_perl.zip",
+        ),
+        ToolchainInfo(
+            packName = "toolchain_lua",
+            displayName = "Lua",
+            shortLabel = "Lua 5.4 / Luajit",
+            descriptionRes = R.string.toolchain_lua_description,
+            // Lua 5.4 + Luajit + luarocks ~15 MB installed
+            // Termux packages ~5 MB download
+            estimatedSize = 18_000_000,
+            downloadSize = 6_000_000,
+            downloadUrl = "https://github.com/rmyndharis/VSCodroid/releases/latest/download/toolchain_lua.zip",
+        ),
     )
 
     /** Look up toolchain info by pack name (e.g. "toolchain_ruby") or short name (e.g. "ruby"). */

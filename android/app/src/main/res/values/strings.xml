@@ -346,6 +346,12 @@
          strings on purpose; "Ruby" and "Java 17" are the products' own names. -->
     <string name="toolchain_ruby_description">Ruby with irb, gem, bundler</string>
     <string name="toolchain_java_description">OpenJDK 17 (javac, jar, jshell)</string>
+    <string name="toolchain_bun_description">Fast JavaScript runtime (bun, bunx)</string>
+    <string name="toolchain_deno_description">Secure JavaScript/TypeScript runtime (deno)</string>
+    <string name="toolchain_zig_description">Zig compiler and standard library (zig)</string>
+    <string name="toolchain_php_description">PHP 8.5 with extensions (php, composer)</string>
+    <string name="toolchain_perl_description">Perl 5.42 with modules (perl, cpan)</string>
+    <string name="toolchain_lua_description">Lua 5.4 and Luajit (lua, luajit, luarocks)</string>
 
     <!-- The checkmark on a selected toolchain card. It is an ImageView with no
          text, so this is the whole of what a screen reader has to announce it. -->
