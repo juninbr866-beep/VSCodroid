@@ -1,12 +1,5 @@
-plugins {
-    id("com.android.asset-pack")
-}
-
-android {
-    assetPack {
-        packName = "toolchain_deno"
-        dynamicDelivery {
-            onDemand = true
-        }
-    }
+plugins { id("com.android.asset-pack") }
+assetPack {
+    packName.set("toolchain_deno")
+    dynamicDelivery { deliveryType.set("on-demand") }
 }

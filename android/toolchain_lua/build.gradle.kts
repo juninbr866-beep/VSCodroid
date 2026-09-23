@@ -1,12 +1,5 @@
-plugins {
-    id("com.android.asset-pack")
-}
-
-android {
-    assetPack {
-        packName = "toolchain_lua"
-        dynamicDelivery {
-            onDemand = true
-        }
-    }
+plugins { id("com.android.asset-pack") }
+assetPack {
+    packName.set("toolchain_lua")
+    dynamicDelivery { deliveryType.set("on-demand") }
 }
