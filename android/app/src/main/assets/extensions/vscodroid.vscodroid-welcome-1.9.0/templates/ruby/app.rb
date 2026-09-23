@@ -1,0 +1,1 @@
+puts "{{PROJECT_NAME}}"

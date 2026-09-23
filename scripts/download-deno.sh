@@ -82,6 +82,11 @@ echo "  Installed deno ($(du -sh "$PACK_ASSETS/usr/bin/deno" | cut -f1))"
 if [ -f "$EXTRACT_DIR/LICENSE" ]; then
     mkdir -p "$PACK_ASSETS/usr/share/doc/deno"
     cp "$EXTRACT_DIR/LICENSE" "$PACK_ASSETS/usr/share/doc/deno/"
+else
+    mkdir -p "$PACK_ASSETS/usr/share/doc/deno"
+    curl -L --fail --show-error \
+        "https://raw.githubusercontent.com/denoland/deno/v${DENO_VERSION}/LICENSE.md" \
+        -o "$PACK_ASSETS/usr/share/doc/deno/LICENSE.md"
 fi
 
 # --- Write manifest ---

@@ -339,6 +339,8 @@ android {
         ":toolchain_php",
         ":toolchain_perl",
         ":toolchain_lua",
+        ":toolchain_dart",
+        ":toolchain_kotlin",
     )
 
     bundle {

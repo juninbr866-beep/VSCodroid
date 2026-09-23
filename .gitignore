@@ -63,10 +63,26 @@ yarn-error.log*
 /android/toolchain_ruby/src/main/assets/toolchain_ruby.json
 /android/toolchain_java/src/main/assets/usr/
 /android/toolchain_java/src/main/assets/toolchain_java.json
+/android/toolchain_bun/src/main/assets/
+/android/toolchain_deno/src/main/assets/
+/android/toolchain_zig/src/main/assets/
+/android/toolchain_php/src/main/assets/
+/android/toolchain_perl/src/main/assets/
+/android/toolchain_lua/src/main/assets/
+/android/toolchain_dart/src/main/assets/
+/android/toolchain_kotlin/src/main/assets/
 
 # ===== Toolchain Asset Pack build intermediates =====
 /android/toolchain_ruby/build/
 /android/toolchain_java/build/
+/android/toolchain_bun/build/
+/android/toolchain_deno/build/
+/android/toolchain_zig/build/
+/android/toolchain_php/build/
+/android/toolchain_perl/build/
+/android/toolchain_lua/build/
+/android/toolchain_dart/build/
+/android/toolchain_kotlin/build/
 
 # ===== Bundletool (local AAB testing only) =====
 bundletool.jar
@@ -81,6 +97,14 @@ bundletool.jar
 # download-claude-code.sh is gone; this keeps its leftover work directory from
 # showing up as untracked on machines that ran it before the bundling was dropped.
 /toolchains/claude-code/
+/toolchains/bun/
+/toolchains/deno/
+/toolchains/dart/
+/toolchains/kotlin/
+/toolchains/lua/
+/toolchains/perl/
+/toolchains/php/
+/toolchains/zig/
 
 # ===== Python =====
 __pycache__/

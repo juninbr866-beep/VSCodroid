@@ -107,15 +107,8 @@ object ToolchainRegistry {
             displayName = "Java 17",
             shortLabel = "Java 17",
             descriptionRes = R.string.toolchain_java_description,
-            // 151,840 KiB measured with `du -sk` over the pack's `usr/` tree,
-            // which is 155.5 MB; the file contents sum to 154.8 MB. This read
-            // 146,000,000 until the JDK grew past it: `download-java.sh` stopped
-            // deleting OpenJDK's `legal/` and began copying with `-RL`, which
-            // dereferences 208 symlinks, and the constant every gate reads did
-            // not move with it. Two comments in ToolchainManager were updated to
-            // say "about 155 MB" while this stayed at 146.
-            estimatedSize = 156_000_000,
-            downloadSize = 56_500_000,
+            estimatedSize = 230_000_000,
+            downloadSize = 120_000_000,
             downloadUrl = "https://github.com/juninbr866-beep/VSCodroid/releases/latest/download/toolchain_java.zip",
         ),
         ToolchainInfo(
@@ -183,6 +176,24 @@ object ToolchainRegistry {
             estimatedSize = 18_000_000,
             downloadSize = 6_000_000,
             downloadUrl = "https://github.com/juninbr866-beep/VSCodroid/releases/latest/download/toolchain_lua.zip",
+        ),
+        ToolchainInfo(
+            packName = "toolchain_dart",
+            displayName = "Dart",
+            shortLabel = "Dart",
+            descriptionRes = R.string.toolchain_dart_description,
+            estimatedSize = 430_000_000,
+            downloadSize = 145_000_000,
+            downloadUrl = "https://github.com/juninbr866-beep/VSCodroid/releases/latest/download/toolchain_dart.zip",
+        ),
+        ToolchainInfo(
+            packName = "toolchain_kotlin",
+            displayName = "Kotlin",
+            shortLabel = "Kotlin",
+            descriptionRes = R.string.toolchain_kotlin_description,
+            estimatedSize = 365_000_000,
+            downloadSize = 220_000_000,
+            downloadUrl = "https://github.com/juninbr866-beep/VSCodroid/releases/latest/download/toolchain_kotlin.zip",
         ),
     )
 

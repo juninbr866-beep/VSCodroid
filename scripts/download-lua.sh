@@ -76,6 +76,37 @@ LUAROCKS_DIR="extracted/luajit/data/data/com.termux/files/usr/lib/luarocks"
 [ -d "$LUAROCKS_DIR" ] && cp -a "$LUAROCKS_DIR"/* "$PACK_ASSETS/usr/lib/luarocks/" 2>/dev/null || true
 
 termux_copy_notices "$PACK_ASSETS/usr" "${ALL_PACKAGES[@]}"
+for package in lua54 luajit; do
+    if [ -f "$PACK_ASSETS/usr/share/doc/$package/copyright" ]; then
+        cp "$PACK_ASSETS/usr/share/doc/$package/copyright" \
+            "$PACK_ASSETS/usr/share/doc/$package/COPYING"
+    fi
+done
+
+python3 - "$PACK_ASSETS/usr" "$ROOT_DIR/android/app/src/main/assets/usr" <<'PY'
+import sys
+from pathlib import Path
+
+pack = Path(sys.argv[1])
+base = Path(sys.argv[2])
+for path in sorted(pack.rglob("*"), key=lambda p: len(p.parts), reverse=True):
+    relative = path.relative_to(pack)
+    other = base / relative
+    if path.is_file() and other.is_file():
+        path.unlink()
+for path in sorted(pack.rglob("*"), key=lambda p: len(p.parts), reverse=True):
+    if path.is_symlink() and not path.exists():
+        path.unlink()
+PY
+
+LIBS_JSON="$(python3 - "$PACK_ASSETS/usr/lib" <<'PY'
+import json
+import sys
+from pathlib import Path
+root = Path(sys.argv[1])
+print(json.dumps(sorted(p.name for p in root.iterdir() if p.is_file() and not p.is_symlink() and ".so" in p.name)))
+PY
+)"
 
 # --- Write manifest ---
 echo ""
@@ -99,6 +130,7 @@ cat > "$PACK_ASSETS/toolchain_lua.json" << EOF
     "binaries": $BINARIES,
     "env": {},
     "pathDirs": ["usr/bin"],
+    "libs": $LIBS_JSON,
     "installRoot": "usr"
 }
 EOF

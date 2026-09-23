@@ -89,6 +89,11 @@ chmod +x "$PACK_ASSETS/usr/bin/bunx"
 if [ -f "$EXTRACT_DIR/LICENSE" ]; then
     mkdir -p "$PACK_ASSETS/usr/share/doc/bun"
     cp "$EXTRACT_DIR/LICENSE" "$PACK_ASSETS/usr/share/doc/bun/"
+else
+    mkdir -p "$PACK_ASSETS/usr/share/doc/bun"
+    curl -L --fail --show-error \
+        "https://raw.githubusercontent.com/oven-sh/bun/bun-v${BUN_VERSION}/LICENSE.md" \
+        -o "$PACK_ASSETS/usr/share/doc/bun/LICENSE.md"
 fi
 
 # --- Write manifest ---

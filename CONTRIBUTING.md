@@ -211,6 +211,8 @@ VSCodroid/
 │   │   └── build.gradle.kts
 │   ├── toolchain_ruby/            # Ruby on-demand asset pack
 │   ├── toolchain_java/            # Java on-demand asset pack
+│   ├── toolchain_dart/            # Dart on-demand asset pack
+│   ├── toolchain_kotlin/          # Kotlin + Java 21 on-demand asset pack
 │   └── settings.gradle.kts
 ├── scripts/                       # Download and build scripts
 │   ├── fetch-vscode-oss.sh           # Fetch the built Code - OSS server tree
@@ -223,6 +225,14 @@ VSCodroid/
 │   ├── build-native-addons.sh        # Cross-compile the native Node addons for Bionic
 │   ├── download-ruby.sh              # Download Ruby toolchain
 │   ├── download-java.sh              # Download Java (OpenJDK 17) toolchain
+│   ├── download-dart.sh              # Download Dart SDK toolchain
+│   ├── download-kotlin.sh            # Download Kotlin + Java 21 toolchain
+│   ├── download-bun.sh               # Download Bun toolchain
+│   ├── download-deno.sh              # Download Deno toolchain
+│   ├── download-zig.sh               # Download Zig toolchain
+│   ├── download-php.sh               # Download PHP toolchain
+│   ├── download-perl.sh              # Download Perl toolchain
+│   ├── download-lua.sh               # Download Lua toolchain
 │   ├── build-all.sh                  # Run all download/build scripts
 │   ├── deploy.sh                     # Build + install + launch on device
 │   ├── device-test.sh                # Run device tests
@@ -301,6 +311,14 @@ checkouts differed.
 | `package-toolchains.sh` | Zips the toolchain asset-pack directories for the GitHub Release that non-Play installs download from. It takes the list from `ToolchainRegistry.kt` rather than carrying one, refuses a pack whose tree is larger than the `estimatedSize` recorded for it (in 4 KiB blocks, the unit that KDoc's `du -sk` reports, since both install pre-flights reserve against that figure), and a full run first deletes any ZIP the registry names no toolchain for, so a withdrawn one is not published beside the current ones | `toolchain-zips/toolchain_*.zip` |
 | `download-ruby.sh` | Downloads Ruby + deps from Termux | `toolchain_ruby/src/main/assets/` |
 | `download-java.sh` | Downloads OpenJDK 17 + deps from Termux | `toolchain_java/src/main/assets/` |
+| `download-dart.sh` | Downloads the Dart SDK from Termux and fixes its Android-native SDK layout | `toolchain_dart/src/main/assets/` |
+| `download-kotlin.sh` | Downloads Kotlin and bundles the Java 21 runtime it needs | `toolchain_kotlin/src/main/assets/` |
+| `download-bun.sh` | Downloads the Bun runtime | `toolchain_bun/src/main/assets/` |
+| `download-deno.sh` | Downloads the Deno runtime | `toolchain_deno/src/main/assets/` |
+| `download-zig.sh` | Downloads the Zig compiler and standard library | `toolchain_zig/src/main/assets/` |
+| `download-php.sh` | Downloads PHP and its Termux extensions | `toolchain_php/src/main/assets/` |
+| `download-perl.sh` | Downloads Perl and its Termux dependencies | `toolchain_perl/src/main/assets/` |
+| `download-lua.sh` | Downloads Lua and Luajit | `toolchain_lua/src/main/assets/` |
 | `check-build-steps.py` | Five checks, and the script prints one line per check so the count is readable from a run rather than from here. Three about shell scripts: the documented build sequence, `build-all.sh`, and the two build workflows all still name the same ones, the third pairs `build.yml` against `release.yml`, so a step dropped from the tag path alone is caught. Then every `scripts/test-*.js` runs in both `lint.yml` and `release.yml`, so a self-check cannot be added and then run by nothing; and every `scripts/check-*.py` is invoked by something, which is the answerable question for that family since several take arguments and run from a script or from Gradle. The self-check rule matches an invocation, not a mention, a script named only in a comment does not count. ⚠️ The shell rules match `bash scripts/*.sh` only, so a script a workflow runs with `python3`, or one called from inside another script, is still not covered, those are listed here by hand. The build-vs-release pairing is also one-directional: a script that runs only on the tag path can be dropped from it and nothing notices | exit status |
 | `write-build-manifest.py` | Records what a build resolved: the app's own version, versionCode and commit, the editor version and commit, the server tarball digest, the musl loader's version and checksum, and the version and checksum of every Termux package. The release workflow attaches it to the release, so a published artifact can be traced to the build that produced it without asking the Actions API for a run that will outlive neither. A record, not a lock: superseded packages are dropped upstream, so a pin would break the build on every routine update. `--compare` reports the differences against an earlier manifest and always exits 0 | `build-manifest.txt` |
 | `check-langserver-patterns.py` | Checks the process monitor can recognise the language servers being packaged. A pattern matching nothing is invisible twice: the server keeps running, keeps counting against the phantom-process budget, and the process tree shows it as 'other' rather than marking it idle | exit status |

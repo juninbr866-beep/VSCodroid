@@ -150,6 +150,14 @@ and the base APK for the table above.
 | [libandroid-execinfo](https://github.com/termux/libandroid-execinfo) | BSD-2-Clause | Ruby |
 | [libandroid-shmem](https://github.com/termux/libandroid-shmem) | BSD-3-Clause | Java |
 | [libandroid-spawn](https://github.com/termux/libandroid-spawn) | BSD-2-Clause | Java |
+| [libandroid-utimes](https://github.com/termux/libandroid-utimes) | BSD-2-Clause | Perl |
+| [Capstone](https://www.capstone-engine.org/) | BSD-3-Clause | PHP |
+| [libcharset](https://gitlab.com/libcharset/libcharset) | LGPL-2.1-or-later | PHP |
+| [Oniguruma](https://github.com/kkos/oniguruma) | BSD-2-Clause | PHP |
+| [tidy](https://www.html-tidy.org/) | W3C | PHP |
+| [libxml2](https://gitlab.gnome.org/GNOME/libxml2) | MIT | PHP |
+| [libxslt](https://gitlab.gnome.org/GNOME/libxslt) | MIT | PHP |
+| [libzip](https://libzip.org/) | BSD-3-Clause | PHP |
 
 GMP is copyleft; its source offer is in `docs/LEGAL_NOTICES.md` beside the rest,
 and the LGPL-3.0 text it requires ships in the base app, which is the only
@@ -161,6 +169,13 @@ licences screen a device installing the Ruby pack has.
 |----------|---------|-----|
 | Ruby | BSD 2-Clause | https://www.ruby-lang.org |
 | OpenJDK | GPL v2 + Classpath | https://openjdk.org |
+| Bun | MIT + bundled WebKit terms | https://bun.sh |
+| Deno | MIT | https://deno.com |
+| Dart | BSD-3-Clause | https://dart.dev |
+| Kotlin | Apache-2.0 | https://kotlinlang.org |
+| PHP | PHP License | https://www.php.net |
+| Perl | Artistic-1.0-Perl OR GPL-1.0-or-later | https://www.perl.org |
+| Lua | MIT | https://www.lua.org |
 
 OpenJDK's own licence and third-party notice files ship inside the Java pack at `usr/lib/jvm/java-17-openjdk/legal`; Ruby's per-gem licence files likewise ship inside the Ruby pack.
 

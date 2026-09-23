@@ -71,6 +71,10 @@ const listen = (event) => (fn) => {
     return { dispose() { delete listeners[event]; } };
 };
 const ran = [];
+let quickPick = () => undefined;
+let inputBox = () => undefined;
+const informationMessages = [];
+const errorMessages = [];
 // Kept rather than discarded, the way scripts/test-process-monitor-extension.js
 // keeps them: the palette entry is a handler nothing else here can reach, and it
 // is the one command in the file a user runs on purpose.
@@ -87,10 +91,19 @@ const vscodeStub = {
         onDidChangeActiveTextEditor: listen('onDidChangeActiveTextEditor'),
         onDidOpenTerminal: listen('onDidOpenTerminal'),
         onDidChangeActiveTerminal: listen('onDidChangeActiveTerminal'),
+        showQuickPick: (...args) => quickPick(...args),
+        showInputBox: (...args) => inputBox(...args),
+        showInformationMessage: (value) => { informationMessages.push(value); return Promise.resolve(); },
+        showErrorMessage: (value) => { errorMessages.push(value); return Promise.resolve(); },
     },
     workspace: {
+        workspaceFolders: [],
         getConfiguration: () => ({ get: (key) => settings[key] }),
     },
+    Uri: {
+        file: (fsPath) => ({ fsPath }),
+    },
+    env: { language: 'en' },
 };
 const resolveFilename = Module._resolveFilename;
 Module._resolveFilename = function (request, ...rest) {
@@ -127,6 +140,11 @@ async function activate(home, commandFor, {
     settings[COMPACT] = compact;
     for (const event of Object.keys(listeners)) delete listeners[event];
     ran.length = 0;
+    quickPick = () => undefined;
+    inputBox = () => undefined;
+    informationMessages.length = 0;
+    errorMessages.length = 0;
+    vscodeStub.workspace.workspaceFolders = [];
     process.env.HOME = home;
     const workspaceState = new Map();
     delete require.cache[require.resolve(EXTENSION)];
@@ -389,6 +407,36 @@ async function main() {
                 'a user who ran it is shown nothing at all',
         );
         assert.deepStrictEqual(escaped, [], `an unhandled rejection escaped: ${escaped}`);
+
+        const projectHome = fs.mkdtempSync(path.join(base, 'project-'));
+        await activate(projectHome, resolves);
+        vscodeStub.workspace.workspaceFolders = [{ uri: { fsPath: projectHome } }];
+        quickPick = async () => ({ id: 'python', label: 'Python' });
+        inputBox = async () => 'hello-project';
+        const createProject = registered.get('vscodroid.createProject');
+        assert.ok(createProject, 'the extension no longer registers vscodroid.createProject');
+        await createProject();
+        const projectDir = path.join(projectHome, 'hello-project');
+        assert.ok(fs.existsSync(path.join(projectDir, 'main.py')));
+        assert.ok(fs.existsSync(path.join(projectDir, '.gitignore')));
+        assert.match(fs.readFileSync(path.join(projectDir, 'main.py'), 'utf8'), /hello_project/);
+        assert.deepStrictEqual(errorMessages, []);
+        assert.match(informationMessages.at(-1), /hello-project/);
+
+        const extensionApi = require(EXTENSION);
+        for (const template of extensionApi.PROJECT_TEMPLATES) {
+            const templateHome = fs.mkdtempSync(path.join(base, `${template.id}-`));
+            vscodeStub.workspace.workspaceFolders = [{ uri: { fsPath: templateHome } }];
+            quickPick = async () => template;
+            inputBox = async () => `project-${template.id}`;
+            await createProject();
+            const directory = path.join(templateHome, `project-${template.id}`);
+            assert.ok(fs.statSync(directory).isDirectory(), `${template.id} was not created`);
+            assert.ok(fs.readdirSync(directory).length > 0, `${template.id} is empty`);
+        }
+
+        assert.strictEqual(extensionApi.isValidProjectName('../bad'), false);
+        assert.strictEqual(extensionApi.isValidProjectName('hello-project'), true);
     } finally {
         process.env.HOME = REAL_HOME;
         fs.rmSync(base, { recursive: true, force: true });

@@ -94,6 +94,31 @@ fi
 # Copy notices
 termux_copy_notices "$PACK_ASSETS/usr" "${ALL_PACKAGES[@]}"
 
+python3 - "$PACK_ASSETS/usr" "$ROOT_DIR/android/app/src/main/assets/usr" <<'PY'
+import sys
+from pathlib import Path
+
+pack = Path(sys.argv[1])
+base = Path(sys.argv[2])
+for path in sorted(pack.rglob("*"), key=lambda p: len(p.parts), reverse=True):
+    relative = path.relative_to(pack)
+    other = base / relative
+    if path.is_file() and other.is_file():
+        path.unlink()
+for path in sorted(pack.rglob("*"), key=lambda p: len(p.parts), reverse=True):
+    if path.is_symlink() and not path.exists():
+        path.unlink()
+PY
+
+LIBS_JSON="$(python3 - "$PACK_ASSETS/usr/lib" <<'PY'
+import json
+import sys
+from pathlib import Path
+root = Path(sys.argv[1])
+print(json.dumps(sorted(p.name for p in root.iterdir() if p.is_file() and not p.is_symlink() and ".so" in p.name)))
+PY
+)"
+
 # --- Write manifest ---
 echo ""
 echo "Writing toolchain_php.json..."
@@ -116,6 +141,7 @@ cat > "$PACK_ASSETS/toolchain_php.json" << EOF
     "binaries": $BINARIES,
     "env": {},
     "pathDirs": ["usr/bin"],
+    "libs": $LIBS_JSON,
     "installRoot": "usr"
 }
 EOF

@@ -352,6 +352,8 @@
     <string name="toolchain_php_description">PHP 8.5 with extensions (php, composer)</string>
     <string name="toolchain_perl_description">Perl 5.42 with modules (perl, cpan)</string>
     <string name="toolchain_lua_description">Lua 5.4 and Luajit (lua, luajit, luarocks)</string>
+    <string name="toolchain_dart_description">Dart SDK (dart, dart pub)</string>
+    <string name="toolchain_kotlin_description">Kotlin 2.4 with Java 21 (kotlinc, kotlin)</string>
 
     <!-- The checkmark on a selected toolchain card. It is an ImageView with no
          text, so this is the whole of what a screen reader has to announce it. -->

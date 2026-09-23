@@ -456,9 +456,17 @@ jobs:
             toolchains/termux-packages/debs/*.deb
             toolchains/termux-packages/Packages
             toolchains/build/npm/
-            toolchains/extensions/
-            toolchains/musl/
-          key: downloads-${{ hashFiles('VSCODE_VERSION', 'VSCODE_COMMIT', 'patches/**', 'branding/**', 'scripts/build-vscode-oss.sh', 'scripts/patch-js-debug-env.py', '.github/workflows/build-vscode-oss.yml', 'scripts/fetch-vscode-oss.sh', 'scripts/verify-server-tree.py', 'scripts/lib/termux-packages.sh', 'scripts/download-termux-tools.sh', 'scripts/download-node.sh', 'scripts/patch-default-shell.py', 'scripts/download-npm.sh', 'scripts/download-python.sh', 'scripts/download-extensions.sh', 'scripts/download-musl-loader.sh', 'scripts/verify-termux-index.sh', 'scripts/termux-repo-key.asc', 'scripts/alpine-devel-616ae350.rsa.pub', 'scripts/verify-android-elf.py') }}
+             toolchains/extensions/
+             toolchains/musl/
+             toolchains/bun/
+             toolchains/deno/
+             toolchains/zig/
+             toolchains/php/
+             toolchains/perl/
+             toolchains/lua/
+             toolchains/dart/
+             toolchains/kotlin/
+          key: downloads-${{ hashFiles('VSCODE_VERSION', 'VSCODE_COMMIT', 'patches/**', 'branding/**', 'scripts/build-vscode-oss.sh', 'scripts/patch-js-debug-env.py', '.github/workflows/build-vscode-oss.yml', 'scripts/fetch-vscode-oss.sh', 'scripts/verify-server-tree.py', 'scripts/lib/termux-packages.sh', 'scripts/download-termux-tools.sh', 'scripts/download-node.sh', 'scripts/patch-default-shell.py', 'scripts/download-npm.sh', 'scripts/download-python.sh', 'scripts/download-bun.sh', 'scripts/download-deno.sh', 'scripts/download-zig.sh', 'scripts/download-php.sh', 'scripts/download-perl.sh', 'scripts/download-lua.sh', 'scripts/download-dart.sh', 'scripts/download-kotlin.sh', 'scripts/download-extensions.sh', 'scripts/download-musl-loader.sh', 'scripts/verify-termux-index.sh', 'scripts/termux-repo-key.asc', 'scripts/alpine-devel-616ae350.rsa.pub', 'scripts/verify-android-elf.py') }}
           restore-keys: |
             downloads-
 
@@ -645,6 +653,14 @@ jobs:
         run: |
           bash scripts/download-ruby.sh
           bash scripts/download-java.sh
+          bash scripts/download-bun.sh
+          bash scripts/download-deno.sh
+          bash scripts/download-zig.sh
+          bash scripts/download-php.sh
+          bash scripts/download-perl.sh
+          bash scripts/download-lua.sh
+          bash scripts/download-dart.sh
+          bash scripts/download-kotlin.sh
 
       # The unit suite ran on every pull request and on no tag, which put the
       # published build on the wrong side of it. Before the signing keystore is

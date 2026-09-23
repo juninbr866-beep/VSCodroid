@@ -289,7 +289,7 @@ M6 (Release)   → Play Store release
    - [x] 4 marketplace extensions bundled offline in `assets/extensions/`:
      - ESLint, Prettier, Python, Tailwind CSS
    - [x] 5 custom VSCodroid extensions:
-     - `vscodroid.vscodroid-welcome-1.8.0`, welcome tab with quick actions
+     - `vscodroid.vscodroid-welcome-1.9.0`, welcome tab with quick actions
      - `vscodroid.vscodroid-saf-bridge-1.9.0`, SAF storage integration
      - `vscodroid.vscodroid-process-monitor-1.4.0`, phantom process monitoring
      - `vscodroid.vscodroid-serve-network-1.3.0`, serve a dev server on the LAN
@@ -409,15 +409,16 @@ M6 (Release)   → Play Store release
    - [x] Extensions load correctly under worker_thread mode
    - [x] Reduces phantom process count by 2 (ExtHost + ptyHost invisible in `/proc`)
 
-2. **On-demand toolchain download scripts** (`scripts/download-ruby.sh`, `download-java.sh`)
+2. **On-demand toolchain download scripts** (`scripts/download-{ruby,java,bun,deno,zig,php,perl,lua,dart,kotlin}.sh`)
    - [x] Ruby from Termux `ruby` + libgmp + libyaml. Unpacked size is recorded in `ToolchainRegistry`, which is what every gate reads: 36 MB today
-   - [x] Java from Termux `openjdk-17` + libandroid-shmem + libandroid-spawn. 156 MB unpacked; the registry read 146 until the JDK grew past it
+   - [x] Java from Termux `openjdk-17` + libandroid-shmem + libandroid-spawn. The registry reserves the measured 225 MB tree
+   - [x] Bun, Deno, Zig, PHP, Perl, Lua and Dart are downloaded as separate on-demand packs; Kotlin bundles the OpenJDK 21 runtime it needs
    - [x] Each script: download .deb → extract → place in asset pack module → strip → write manifest
    - [x] Each script fails the build on any symbolic link anywhere in the pack. Neither delivery path can carry one: an asset pack cannot hold a link, and `ToolchainManager.extractZip` writes it as a text file holding the target path
    - Go shipped here and was withdrawn: it ran but could not compile, because Android refuses to execute a file under the app's data directory and `go build` forks its own compiler.
 
 3. **Play Asset Delivery integration** (`ToolchainManager.kt`, `ToolchainRegistry.kt`)
-   - [x] Gradle asset pack modules (`toolchain_ruby/`, `toolchain_java/`)
+   - [x] Gradle asset pack modules (`toolchain_ruby/`, `toolchain_java/`, `toolchain_bun/`, `toolchain_deno/`, `toolchain_zig/`, `toolchain_php/`, `toolchain_perl/`, `toolchain_lua/`, `toolchain_dart/`, `toolchain_kotlin/`)
    - [x] `ToolchainManager`: fetch, progress tracking, copy to filesDir, chmod +x, symlinks, uninstall
    - [x] `ToolchainRegistry`: catalog of available toolchains with sizes
    - [x] `Environment.kt`: dynamic toolchain env vars merged into server process
@@ -434,7 +435,7 @@ M6 (Release)   → Play Store release
 
 - [x] Extension Host runs as worker_thread (phantom process count reduced)
 - [x] ptyHost runs as worker_thread (additional phantom process saved)
-- [x] On-demand toolchains delivered via Play Asset Delivery (Go, Ruby, Java)
+   - [x] On-demand toolchains delivered via Play Asset Delivery (Ruby, Java, Bun, Deno, Zig, PHP, Perl, Lua, Dart and Kotlin)
 - [x] ToolchainManager handles full lifecycle (install, uninstall, env vars, symlinks)
 - [x] Language Picker UI works during first-run, from the launcher icon's **Manage toolchains** shortcut and from the Command Palette (`SplashActivity` + `ToolchainActivity`)
 

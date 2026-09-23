@@ -651,6 +651,7 @@ VSCodroid bundles binaries licensed under the GNU General Public License (GPL). 
 - **Zstandard** (GPL-2.0 as packaged by Termux; dual-licensed BSD-3-Clause upstream): Source available at https://github.com/termux/termux-packages (package: `zstd`), linked by Python's `zstd` module
 - **GMP** (LGPL-3.0): Source available at https://github.com/termux/termux-packages (package: `libgmp`). Shipped inside the Ruby toolchain pack, not the base app, so it reaches only devices where Ruby was installed
 - **OpenJDK 17** (GPL-2.0 with the Classpath Exception): Source available at https://github.com/termux/termux-packages (package: `openjdk-17`), built from https://github.com/openjdk/jdk17u. Shipped inside the Java toolchain pack, not the base app, so it reaches only devices where Java was installed. The Classpath Exception grants an additional permission and removes none of the obligations above.
+- **libcharset** (LGPL-2.1-or-later): Source available at https://gitlab.com/libcharset/libcharset, shipped in the PHP toolchain pack
 - **zeromq.js** (MIT; the libzmq linked into it is LGPL-3.0-or-later with libzmq's static linking exception): Source available at https://github.com/zeromq/libzmq/archive/20de92ac0a2b2b9a1869782a429df68f93c3625e.tar.gz and https://registry.npmjs.org/zeromq/-/zeromq-6.0.0-beta.16.tgz; the build options and compile command are `scripts/build-native-addons.sh` in this repository, which pins both by sha256. Shipped in the base app.
 
 Every entry from readline to GMP reaches the app as a dependency of something
@@ -677,7 +678,7 @@ The offer above is one obligation; a copy of the licence itself is the other. GP
 |---|---|---|
 | GPL-2.0 | `licenses/COPYING.GPLv2` | Git, `git-remote-curl`, Zstandard, xz / liblzma, Java (OpenJDK) |
 | GPL-3.0 | `licenses/COPYING.GPLv3` | Bash, GNU Make, readline, gdbm, libiconv, xz / liblzma |
-| LGPL-2.1 | `licenses/COPYING.LGPLv2.1` | libiconv, xz / liblzma |
+| LGPL-2.1 | `licenses/COPYING.LGPLv2.1` | libiconv, xz / liblzma, libcharset |
 | LGPL-3.0 | `licenses/COPYING.LGPLv3` | GMP (Ruby toolchain pack), libzmq (inside zeromq.js) |
 
 The first three are the Free Software Foundation's texts as shipped in Termux's `liblzma` package, which is one of the packages this app redistributes. LGPL-3.0 is the FSF's own publication at https://www.gnu.org/licenses/lgpl-3.0.txt, because no Termux package here carries it; libzmq's copy, with its exception appended, also ships beside the zeromq.js addon. All four are verbatim, and `NoticesTest` pins the sha256 of each: a licence text that has been reflowed, re-wrapped or truncated is no longer the licence, so none of them may be edited.
@@ -711,6 +712,14 @@ nothing and report success.
 | libandroid-execinfo | BSD-2-Clause | Ruby | https://github.com/termux/libandroid-execinfo |
 | libandroid-shmem | BSD-3-Clause | Java | https://github.com/termux/libandroid-shmem |
 | libandroid-spawn | BSD-2-Clause | Java | https://github.com/termux/libandroid-spawn |
+| libandroid-utimes | BSD-2-Clause | Perl | https://github.com/termux/libandroid-utimes |
+| Capstone | BSD-3-Clause | PHP | https://www.capstone-engine.org/ |
+| libcharset | LGPL-2.1-or-later | PHP | https://gitlab.com/libcharset/libcharset |
+| Oniguruma | BSD-2-Clause | PHP | https://github.com/kkos/oniguruma |
+| tidy | W3C | PHP | https://www.html-tidy.org/ |
+| libxml2 | MIT | PHP | https://gitlab.gnome.org/GNOME/libxml2 |
+| libxslt | MIT | PHP | https://gitlab.gnome.org/GNOME/libxslt |
+| libzip | BSD-3-Clause | PHP | https://libzip.org/ |
 
 GMP is the only copyleft entry here. Its written source offer sits with the
 others under **GPL Source Code Availability** above, and the LGPL-3.0 text it
@@ -741,6 +750,48 @@ The following toolchains are available as optional downloads and have their own 
 - **License**: GNU General Public License v2.0 with Classpath Exception (GPL-2.0 WITH Classpath-exception-2.0)
 - **Copyright**: Copyright (c) Oracle and/or its affiliates
 - **Full license**: `licenses/COPYING.GPLv2`, which ships in the app at **About > Licenses > License Texts**; the Classpath Exception that modifies it is stated at https://openjdk.org/legal/gplv2+ce.html
+
+### Bun
+
+- **Project**: https://bun.sh
+- **License**: MIT for Bun; the binary includes JavaScriptCore/WebKit terms shipped in `usr/share/doc/bun/LICENSE.md`
+- **Full license**: `usr/share/doc/bun/LICENSE.md` inside the pack
+
+### Deno
+
+- **Project**: https://deno.com
+- **License**: MIT
+- **Full license**: `usr/share/doc/deno/LICENSE.md` inside the pack
+
+### Dart
+
+- **Project**: https://dart.dev
+- **License**: BSD-3-Clause
+- **Full license**: `usr/share/doc/dart/` inside the pack
+
+### Kotlin
+
+- **Project**: https://kotlinlang.org
+- **License**: Apache-2.0
+- **Full license**: `usr/share/doc/kotlin/LICENSE.txt` inside the pack
+
+### PHP
+
+- **Project**: https://www.php.net
+- **License**: PHP License
+- **Full license**: `usr/share/doc/php/` inside the pack
+
+### Perl
+
+- **Project**: https://www.perl.org
+- **License**: Artistic-1.0-Perl OR GPL-1.0-or-later
+- **Full license**: `usr/share/doc/perl/` inside the pack
+
+### Lua
+
+- **Project**: https://www.lua.org
+- **License**: MIT
+- **Full license**: `usr/share/doc/lua54/COPYING` inside the pack
 
 ---
 

@@ -44,22 +44,34 @@ step 3/11 "Installing the server tree into assets..."
 step 4/11 "Building the translated interface bundles..."
 python3 "$SCRIPT_DIR/build-nls-bundles.py"
 
-step 5/11 "Downloading Termux tools..."
+step 5/12 "Downloading Termux tools..."
 "$SCRIPT_DIR/download-termux-tools.sh"
 
-step 6/11 "Downloading npm..."
+step 6/12 "Downloading on-demand toolchains..."
+"$SCRIPT_DIR/download-java.sh"
+"$SCRIPT_DIR/download-ruby.sh"
+"$SCRIPT_DIR/download-dart.sh"
+"$SCRIPT_DIR/download-kotlin.sh"
+"$SCRIPT_DIR/download-bun.sh"
+"$SCRIPT_DIR/download-deno.sh"
+"$SCRIPT_DIR/download-zig.sh"
+"$SCRIPT_DIR/download-php.sh"
+"$SCRIPT_DIR/download-perl.sh"
+"$SCRIPT_DIR/download-lua.sh"
+
+step 7/12 "Downloading npm..."
 "$SCRIPT_DIR/download-npm.sh"
 
-step 7/11 "Downloading Python..."
+step 8/12 "Downloading Python..."
 "$SCRIPT_DIR/download-python.sh"
 
-step 8/11 "Downloading extensions..."
+step 9/12 "Downloading extensions..."
 "$SCRIPT_DIR/download-extensions.sh"
 
-step 9/11 "Downloading the musl loader..."
+step 10/12 "Downloading the musl loader..."
 "$SCRIPT_DIR/download-musl-loader.sh"
 
-step 10/11 "Building native addons and the compatibility shim..."
+step 11/12 "Building native addons and the compatibility shim..."
 "$SCRIPT_DIR/download-node.sh"
 "$SCRIPT_DIR/build-native-addons.sh"
 "$SCRIPT_DIR/build-glibc-shim.sh" \
@@ -73,7 +85,7 @@ step 10/11 "Building native addons and the compatibility shim..."
 # The same, and it can sit here for the same reason: it writes only into jniLibs.
 "$SCRIPT_DIR/build-claude-shim.sh"
 
-step 11/11 "Building the APK..."
+step 12/12 "Building the APK..."
 cd "$ROOT_DIR/android"
 if [ ! -f gradlew ]; then
     echo "  ERROR: Gradle wrapper not found. Run: cd android && gradle wrapper" >&2
@@ -97,5 +109,5 @@ echo
 echo "========================================="
 echo "  Build complete"
 echo "  Deploy: ./scripts/deploy.sh"
-echo "  Optional toolchains: ./scripts/download-{ruby,java}.sh"
+echo "  Optional toolchains: ./scripts/download-{ruby,java,dart,kotlin,bun,deno,zig,php,perl,lua}.sh"
 echo "========================================="
