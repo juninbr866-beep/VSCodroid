@@ -100,7 +100,7 @@ object ToolchainRegistry {
             // cannot finish. The ZIP that tree packs into is 10,421,167 bytes.
             estimatedSize = 39_000_000,
             downloadSize = 10_500_000,
-            downloadUrl = "https://github.com/rmyndharis/VSCodroid/releases/latest/download/toolchain_ruby.zip",
+            downloadUrl = "https://github.com/juninbr866-beep/VSCodroid/releases/latest/download/toolchain_ruby.zip",
         ),
         ToolchainInfo(
             packName = "toolchain_java",
@@ -116,7 +116,7 @@ object ToolchainRegistry {
             // say "about 155 MB" while this stayed at 146.
             estimatedSize = 156_000_000,
             downloadSize = 56_500_000,
-            downloadUrl = "https://github.com/rmyndharis/VSCodroid/releases/latest/download/toolchain_java.zip",
+            downloadUrl = "https://github.com/juninbr866-beep/VSCodroid/releases/latest/download/toolchain_java.zip",
         ),
         ToolchainInfo(
             packName = "toolchain_bun",
@@ -127,7 +127,7 @@ object ToolchainRegistry {
             // GitHub release ZIP ~35 MB
             estimatedSize = 90_000_000,
             downloadSize = 36_000_000,
-            downloadUrl = "https://github.com/rmyndharis/VSCodroid/releases/latest/download/toolchain_bun.zip",
+            downloadUrl = "https://github.com/juninbr866-beep/VSCodroid/releases/latest/download/toolchain_bun.zip",
         ),
         ToolchainInfo(
             packName = "toolchain_deno",
@@ -138,7 +138,7 @@ object ToolchainRegistry {
             // GitHub release ZIP ~38 MB
             estimatedSize = 100_000_000,
             downloadSize = 40_000_000,
-            downloadUrl = "https://github.com/rmyndharis/VSCodroid/releases/latest/download/toolchain_deno.zip",
+            downloadUrl = "https://github.com/juninbr866-beep/VSCodroid/releases/latest/download/toolchain_deno.zip",
         ),
         ToolchainInfo(
             packName = "toolchain_zig",
@@ -149,7 +149,7 @@ object ToolchainRegistry {
             // Release tarball ~130 MB
             estimatedSize = 400_000_000,
             downloadSize = 135_000_000,
-            downloadUrl = "https://github.com/rmyndharis/VSCodroid/releases/latest/download/toolchain_zig.zip",
+            downloadUrl = "https://github.com/juninbr866-beep/VSCodroid/releases/latest/download/toolchain_zig.zip",
         ),
         ToolchainInfo(
             packName = "toolchain_php",
@@ -160,7 +160,7 @@ object ToolchainRegistry {
             // Termux packages total ~80 MB download
             estimatedSize = 130_000_000,
             downloadSize = 85_000_000,
-            downloadUrl = "https://github.com/rmyndharis/VSCodroid/releases/latest/download/toolchain_php.zip",
+            downloadUrl = "https://github.com/juninbr866-beep/VSCodroid/releases/latest/download/toolchain_php.zip",
         ),
         ToolchainInfo(
             packName = "toolchain_perl",
@@ -171,7 +171,7 @@ object ToolchainRegistry {
             // Termux packages ~30 MB download
             estimatedSize = 75_000_000,
             downloadSize = 32_000_000,
-            downloadUrl = "https://github.com/rmyndharis/VSCodroid/releases/latest/download/toolchain_perl.zip",
+            downloadUrl = "https://github.com/juninbr866-beep/VSCodroid/releases/latest/download/toolchain_perl.zip",
         ),
         ToolchainInfo(
             packName = "toolchain_lua",
@@ -182,7 +182,7 @@ object ToolchainRegistry {
             // Termux packages ~5 MB download
             estimatedSize = 18_000_000,
             downloadSize = 6_000_000,
-            downloadUrl = "https://github.com/rmyndharis/VSCodroid/releases/latest/download/toolchain_lua.zip",
+            downloadUrl = "https://github.com/juninbr866-beep/VSCodroid/releases/latest/download/toolchain_lua.zip",
         ),
     )
 
