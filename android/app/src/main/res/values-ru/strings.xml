@@ -574,6 +574,7 @@
          the gesture stream first, so these labels are the whole of that route:
          they appear in the actions menu a screen reader shows for the view. -->
     <string name="trackpad_description">Трекпад со стрелками. Проведите пальцем, чтобы переместить курсор.</string>
+    <string name="input_preview_description">Вводимый текст</string>
     <string name="trackpad_action_left">Переместить курсор влево</string>
     <string name="trackpad_action_right">Переместить курсор вправо</string>
     <string name="trackpad_action_up">Переместить курсор вверх</string>

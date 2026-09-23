@@ -574,6 +574,7 @@
          the gesture stream first, so these labels are the whole of that route:
          they appear in the actions menu a screen reader shows for the view. -->
     <string name="trackpad_description">Touchpad pro kurzorové klávesy. Přetažením posunete kurzor.</string>
+    <string name="input_preview_description">Vkládaný text</string>
     <string name="trackpad_action_left">Posunout kurzor doleva</string>
     <string name="trackpad_action_right">Posunout kurzor doprava</string>
     <string name="trackpad_action_up">Posunout kurzor nahoru</string>

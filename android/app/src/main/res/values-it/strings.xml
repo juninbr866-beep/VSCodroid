@@ -566,6 +566,7 @@
          the gesture stream first, so these labels are the whole of that route:
          they appear in the actions menu a screen reader shows for the view. -->
     <string name="trackpad_description">Trackpad dei tasti freccia. Trascina per spostare il cursore.</string>
+    <string name="input_preview_description">Testo in fase di inserimento</string>
     <string name="trackpad_action_left">Sposta il cursore a sinistra</string>
     <string name="trackpad_action_right">Sposta il cursore a destra</string>
     <string name="trackpad_action_up">Sposta il cursore in alto</string>

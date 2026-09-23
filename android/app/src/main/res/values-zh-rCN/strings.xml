@@ -562,6 +562,7 @@
          the gesture stream first, so these labels are the whole of that route:
          they appear in the actions menu a screen reader shows for the view. -->
     <string name="trackpad_description">方向键触控板。拖动以移动光标。</string>
+    <string name="input_preview_description">正在输入的文本</string>
     <string name="trackpad_action_left">向左移动光标</string>
     <string name="trackpad_action_right">向右移动光标</string>
     <string name="trackpad_action_up">向上移动光标</string>

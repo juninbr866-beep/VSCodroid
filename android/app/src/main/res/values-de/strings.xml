@@ -566,6 +566,7 @@
          the gesture stream first, so these labels are the whole of that route:
          they appear in the actions menu a screen reader shows for the view. -->
     <string name="trackpad_description">Trackpad für Pfeiltasten. Ziehen Sie, um den Cursor zu bewegen.</string>
+    <string name="input_preview_description">Eingegebener Text</string>
     <string name="trackpad_action_left">Cursor nach links bewegen</string>
     <string name="trackpad_action_right">Cursor nach rechts bewegen</string>
     <string name="trackpad_action_up">Cursor nach oben bewegen</string>

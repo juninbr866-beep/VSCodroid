@@ -566,6 +566,7 @@
          the gesture stream first, so these labels are the whole of that route:
          they appear in the actions menu a screen reader shows for the view. -->
     <string name="trackpad_description">Ok tuşu izleme alanı. İmleci taşımak için sürükleyin.</string>
+    <string name="input_preview_description">Girilen metin</string>
     <string name="trackpad_action_left">İmleci sola taşı</string>
     <string name="trackpad_action_right">İmleci sağa taşı</string>
     <string name="trackpad_action_up">İmleci yukarı taşı</string>

@@ -566,6 +566,7 @@
          the gesture stream first, so these labels are the whole of that route:
          they appear in the actions menu a screen reader shows for the view. -->
     <string name="trackpad_description">Panel táctil de teclas de flecha. Arrastra para mover el cursor.</string>
+    <string name="input_preview_description">Texto que se está escribiendo</string>
     <string name="trackpad_action_left">Mover el cursor a la izquierda</string>
     <string name="trackpad_action_right">Mover el cursor a la derecha</string>
     <string name="trackpad_action_up">Mover el cursor hacia arriba</string>
