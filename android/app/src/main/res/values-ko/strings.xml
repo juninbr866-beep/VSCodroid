@@ -343,6 +343,14 @@
          strings on purpose; "Ruby" and "Java 17" are the products' own names. -->
     <string name="toolchain_ruby_description">Ruby와 irb, gem, bundler</string>
     <string name="toolchain_java_description">OpenJDK 17 (javac, jar, jshell)</string>
+    <string name="toolchain_bun_description">빠른 JavaScript 런타임 (bun, bunx)</string>
+    <string name="toolchain_deno_description">안전한 JavaScript/TypeScript 런타임 (deno)</string>
+    <string name="toolchain_zig_description">Zig 컴파일러 및 표준 라이브러리 (zig)</string>
+    <string name="toolchain_php_description">확장 기능이 포함된 PHP 8.5 (php, composer)</string>
+    <string name="toolchain_perl_description">모듈이 포함된 Perl 5.42 (perl, cpan)</string>
+    <string name="toolchain_lua_description">Lua 5.4 및 Luajit (lua, luajit, luarocks)</string>
+    <string name="toolchain_dart_description">Dart SDK (dart, dart pub)</string>
+    <string name="toolchain_kotlin_description">Java 21이 포함된 Kotlin 2.4 (kotlinc, kotlin)</string>
 
     <!-- The checkmark on a selected toolchain card. It is an ImageView with no
          text, so this is the whole of what a screen reader has to announce it. -->
