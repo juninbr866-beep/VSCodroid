@@ -515,7 +515,7 @@ fun getDeviceInfo(authToken: String): String
 //   "android": 36,
 //   "api": 36,
 //   "manufacturer": "Google",
-//   "vscodroid_version": "1.5.1",
+//   "vscodroid_version": "1.5.2",
 //   "screen_width": 1080,
 //   "screen_height": 2400,
 //   "screen_density": 2.625,

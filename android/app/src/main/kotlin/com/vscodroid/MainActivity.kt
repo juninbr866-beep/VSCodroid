@@ -106,21 +106,80 @@ import androidx.core.content.edit
 import androidx.core.net.toUri
 import android.annotation.SuppressLint
 
-private const val INPUT_PREVIEW_INTERVAL_MS = 180L
+private const val INPUT_PREVIEW_INTERVAL_MS = 100L
 private const val INPUT_PREVIEW_SCRIPT = """
 (() => {
-    const element = document.activeElement;
-    if (!element) return "";
-    if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) {
-        return element.value || "";
+    const state = window.__vscodroidInputPreviewState || {
+        installed: false,
+        scheduled: false,
+        contexts: new WeakSet(),
+        text: ""
+    };
+    if (!state.contexts) state.contexts = new WeakSet();
+    window.__vscodroidInputPreviewState = state;
+
+    const hostFor = (element) => {
+        if (!element) return null;
+        if (element.closest) {
+            return element.closest(
+                ".native-edit-context, .monaco-editor textarea.inputarea, .xterm-helper-textarea"
+            ) || element;
+        }
+        return element;
+    };
+
+    const read = (element) => {
+        const host = hostFor(element);
+        if (!host) return "";
+        if (host.editContext) return host.editContext.text || "";
+        if (host instanceof HTMLInputElement || host instanceof HTMLTextAreaElement) {
+            return host.value || "";
+        }
+        if (host.isContentEditable) return host.innerText || host.textContent || "";
+        return "";
+    };
+
+    const attach = (element) => {
+        const host = hostFor(element);
+        const context = host && host.editContext;
+        if (!context || state.contexts.has(context)) return;
+        state.contexts.add(context);
+        context.addEventListener("textupdate", schedule);
+        context.addEventListener("textformatupdate", schedule);
+        context.addEventListener("compositionstart", schedule);
+        context.addEventListener("compositionend", schedule);
+    };
+
+    const sync = () => {
+        const host = hostFor(document.activeElement);
+        attach(host);
+        state.text = read(host);
+    };
+
+    function schedule() {
+        if (state.scheduled) return;
+        state.scheduled = true;
+        setTimeout(() => {
+            state.scheduled = false;
+            sync();
+            if (window.requestAnimationFrame) window.requestAnimationFrame(sync);
+        }, 0);
     }
-    if (element.editContext) {
-        return element.editContext.text || "";
+
+    if (!state.installed) {
+        state.installed = true;
+        for (const type of [
+            "beforeinput", "input", "keydown", "keyup",
+            "compositionstart", "compositionupdate", "compositionend",
+            "focusin", "focusout"
+        ]) {
+            document.addEventListener(type, schedule, true);
+        }
+        document.addEventListener("selectionchange", schedule, true);
     }
-    if (element.isContentEditable) {
-        return element.innerText || element.textContent || "";
-    }
-    return "";
+
+    sync();
+    return state.text;
 })()
 """
 
@@ -130,6 +189,7 @@ class MainActivity : AppCompatActivity() {
     private var webView: WebView? = null
     private var inputPreview: TextView? = null
     private var inputPreviewEnabled = false
+    private var inputPreviewGeneration = 0L
     private val inputPreviewHandler = Handler(Looper.getMainLooper())
     private var extraKeyRow: ExtraKeyRow? = null
 
@@ -137,8 +197,11 @@ class MainActivity : AppCompatActivity() {
         override fun run() {
             if (!inputPreviewEnabled) return
             val currentWebView = webView ?: return
+            val generation = ++inputPreviewGeneration
             currentWebView.evaluateJavascript(INPUT_PREVIEW_SCRIPT) { raw ->
-                if (!inputPreviewEnabled) return@evaluateJavascript
+                if (!inputPreviewEnabled || generation != inputPreviewGeneration) {
+                    return@evaluateJavascript
+                }
                 val text: String = runCatching { JSONTokener(raw).nextValue() as? String }
                     .getOrNull()
                     .orEmpty()
@@ -147,7 +210,7 @@ class MainActivity : AppCompatActivity() {
                     Configuration.ORIENTATION_LANDSCAPE && text.isNotEmpty()
                 preview.text = text
                 preview.visibility = if (show) View.VISIBLE else View.GONE
-                if (inputPreviewEnabled) {
+                if (inputPreviewEnabled && generation == inputPreviewGeneration) {
                     inputPreviewHandler.postDelayed(inputPreviewPoller, INPUT_PREVIEW_INTERVAL_MS)
                 }
             }
@@ -1111,6 +1174,7 @@ class MainActivity : AppCompatActivity() {
         // this method returns; with the injector left in place it asks a
         // destroyed WebView, which answers by logging and never calling back.
         inputPreviewEnabled = false
+        inputPreviewGeneration += 1
         inputPreviewHandler.removeCallbacks(inputPreviewPoller)
         inputPreview = null
         extraKeyRow?.keyInjector = null
@@ -2226,10 +2290,12 @@ class MainActivity : AppCompatActivity() {
             webView?.evaluateJavascript("window.__vscodroidImeVisible = $visible;", null)
             if (visible) {
                 inputPreviewEnabled = true
+                inputPreviewGeneration += 1
                 inputPreviewHandler.removeCallbacks(inputPreviewPoller)
                 inputPreviewHandler.post(inputPreviewPoller)
             } else {
                 inputPreviewEnabled = false
+                inputPreviewGeneration += 1
                 inputPreviewHandler.removeCallbacks(inputPreviewPoller)
                 inputPreview?.text = ""
                 inputPreview?.visibility = View.GONE

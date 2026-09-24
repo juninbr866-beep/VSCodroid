@@ -94,8 +94,9 @@ temporary directory, and is executed directly by `node`.
 | Download capture | The script that makes saving a file out of the Explorer possible at all | `scripts/test-download-capture.js` |
 | Serve on Network | The port scan and its reachable/local split | `scripts/test-serve-network.js` |
 | Welcome | That the walkthrough and side bar markers are written only after the command they record actually ran | `scripts/test-welcome.js` |
+| Landscape input preview | That EditContext, deletion, focus changes, and fallback input events update the preview without duplicate listeners | `scripts/test-input-preview.js` |
 
-**Run**: all nine, one `node` invocation each, in the `Check the bundled
+**Run**: all eleven, one `node` invocation each, in the `Check the bundled
 JavaScript runtime` step of `lint.yml`, and again in `release.yml`, on Node 24,
 the major the APK ships (`check-build-steps.py` holds the pins there). `lint.yml`
 also runs the `--self-test` entry points of `check-workflow-steps.py`,

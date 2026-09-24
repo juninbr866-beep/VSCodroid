@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 class InputPreviewWiringTest {
 
     @Test
-    fun `preview reads the EditContext text used by the editor`() {
+    fun `preview follows all editor input paths`() {
         val source = SourceScan.withoutComments(
             SourceScan.read("src/main/kotlin/com/vscodroid/MainActivity.kt")
         )
@@ -15,16 +15,24 @@ class InputPreviewWiringTest {
         val end = source.indexOf("class MainActivity", start)
         assertTrue(end > start, "the input preview script has no end")
         val script = source.substring(start, end)
-        assertTrue(script.contains("element.editContext"), "the preview does not read EditContext")
-        val editContext = script.indexOf("if (element.editContext)")
-        val contentEditable = script.indexOf("if (element.isContentEditable)")
-        assertTrue(
-            editContext >= 0 && editContext < contentEditable,
-            "the preview must prefer EditContext text over the rendered DOM text",
-        )
-        assertTrue(
-            script.contains("element.editContext.text"),
-            "the preview does not read the editor's current text",
-        )
+        val editContext = script.indexOf("if (host.editContext)")
+        val contentEditable = script.indexOf("if (host.isContentEditable)")
+        assertTrue(editContext >= 0 && editContext < contentEditable, "EditContext must be read first")
+        for (name in listOf(
+            "host.editContext.text",
+            ".native-edit-context",
+            ".monaco-editor textarea.inputarea",
+            ".xterm-helper-textarea",
+            "textupdate",
+            "textformatupdate",
+            "beforeinput",
+            "input",
+            "keydown",
+            "focusin",
+            "selectionchange",
+        )) {
+            assertTrue(script.contains(name), "the preview does not handle $name")
+        }
+        assertTrue(source.contains("inputPreviewGeneration"), "stale preview callbacks are not invalidated")
     }
 }

@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.2] - 2026-09-24
+
+### Fixed
+
+- The landscape input preview now follows editor input events and EditContext updates, so deletion, composition, focus changes, and all editor input paths stay synchronized.
+
 ## [1.5.1] - 2026-09-23
 
 ### Fixed
@@ -1019,7 +1025,8 @@ This release represents the cumulative work across milestones M0 through M5, bri
 - Health check polling for server readiness
 - Android intent handling for "Open with VSCodroid"
 
-[Unreleased]: https://github.com/rmyndharis/VSCodroid/compare/v1.5.1...HEAD
+[Unreleased]: https://github.com/rmyndharis/VSCodroid/compare/v1.5.2...HEAD
+[1.5.2]: https://github.com/rmyndharis/VSCodroid/compare/v1.5.1...v1.5.2
 [1.5.1]: https://github.com/rmyndharis/VSCodroid/compare/v1.5.0...v1.5.1
 [1.5.0]: https://github.com/rmyndharis/VSCodroid/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/rmyndharis/VSCodroid/compare/v1.3.0...v1.4.0
