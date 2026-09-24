@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.1] - 2026-09-24
+
+### Added
+
+- Get Started now includes a Run your project button that opens the local workspace runner.
+
 ## [1.6.0] - 2026-09-24
 
 ### Added
@@ -1031,7 +1037,8 @@ This release represents the cumulative work across milestones M0 through M5, bri
 - Health check polling for server readiness
 - Android intent handling for "Open with VSCodroid"
 
-[Unreleased]: https://github.com/rmyndharis/VSCodroid/compare/v1.6.0...HEAD
+[Unreleased]: https://github.com/rmyndharis/VSCodroid/compare/v1.6.1...HEAD
+[1.6.1]: https://github.com/rmyndharis/VSCodroid/compare/v1.6.0...v1.6.1
 [1.6.0]: https://github.com/rmyndharis/VSCodroid/compare/v1.5.2...v1.6.0
 [1.5.2]: https://github.com/rmyndharis/VSCodroid/compare/v1.5.1...v1.5.2
 [1.5.1]: https://github.com/rmyndharis/VSCodroid/compare/v1.5.0...v1.5.1
