@@ -95,8 +95,9 @@ temporary directory, and is executed directly by `node`.
 | Serve on Network | The port scan and its reachable/local split | `scripts/test-serve-network.js` |
 | Welcome | That the walkthrough and side bar markers are written only after the command they record actually ran | `scripts/test-welcome.js` |
 | Landscape input preview | That EditContext, deletion, focus changes, and fallback input events update the preview without duplicate listeners | `scripts/test-input-preview.js` |
+| Local runner | Task discovery, package scripts, Makefile targets, shell quoting, and workspace guards | `scripts/test-local-runner.js` |
 
-**Run**: all eleven, one `node` invocation each, in the `Check the bundled
+**Run**: all twelve, one `node` invocation each, in the `Check the bundled
 JavaScript runtime` step of `lint.yml`, and again in `release.yml`, on Node 24,
 the major the APK ships (`check-build-steps.py` holds the pins there). `lint.yml`
 also runs the `--self-test` entry points of `check-workflow-steps.py`,

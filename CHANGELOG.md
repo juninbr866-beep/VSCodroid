@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- A local workspace runner can discover VS Code tasks, npm scripts, and Makefile targets, run a custom command, show progress in the task terminal, and cancel the active run.
+
 ## [1.5.2] - 2026-09-24
 
 ### Fixed

@@ -1066,13 +1066,13 @@ part of the server build, not of `assets/extensions/`, and nothing in this repos
 lists them; count them with
 `ls android/app/src/main/assets/vscode-reh/extensions/`.
 
-**2. `assets/extensions/`**: nine directories, extracted to `~/.vscodroid/extensions/`
+**2. `assets/extensions/`**: ten directories, extracted to `~/.vscodroid/extensions/`
 during setup:
 
 ```mermaid
 flowchart TD
   ROOT["assets/extensions/"] --> T["4 from Open VSX, fetched at build time"]
-  ROOT --> O["5 first-party, source in git"]
+  ROOT --> O["6 first-party, source in git"]
   T --> T2["esbenp.prettier-vscode"]
   T --> T3["ms-python.python"]
   T --> T4["dbaeumer.vscode-eslint"]
@@ -1082,12 +1082,13 @@ flowchart TD
   O --> O3["vscodroid.vscodroid-process-monitor"]
   O --> O4["vscodroid.vscodroid-serve-network (dev-server preview)"]
   O --> O5["vscodroid.vscodroid-editor-menus (Select All in the editor context menu, no code)"]
+  O --> O6["vscodroid.vscodroid-local-runner (workspace tasks and commands)"]
 ```
 
 ⚠️ **`git ls-files` answers a different question than `ls` here, and the gap is
 deliberate.** `.gitignore` ignores `assets/extensions/*` and un-ignores only
 `vscodroid.vscodroid-*/`, because this project's own extensions are source and the rest
-are downloads. So a worktree shows **five** directories and a built tree shows **nine**:
+are downloads. So a worktree shows **six** directories and a built tree shows **ten**:
 the four Open VSX ones are fetched by `scripts/download-extensions.sh`, whose
 `EXTENSIONS` array is the tracked, authoritative list of what a build pulls. Read that
 array plus the five `vscodroid.*` directories; do not enumerate this set from git.

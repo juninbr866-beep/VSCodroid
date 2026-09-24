@@ -1,0 +1,6 @@
+{
+  "displayName": "Runner local do VSCodroid",
+  "description": "Executa tarefas e comandos do projeto no workspace atual.",
+  "command.run": "Executar tarefa local",
+  "command.cancel": "Cancelar tarefa local"
+}

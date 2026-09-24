@@ -1,0 +1,29 @@
+{
+  "name": "vscodroid-local-runner",
+  "displayName": "%displayName%",
+  "description": "%description%",
+  "version": "1.0.0",
+  "publisher": "vscodroid",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vscodroid.localRunner.run",
+        "title": "%command.run%"
+      },
+      {
+        "command": "vscodroid.localRunner.cancel",
+        "title": "%command.cancel%"
+      }
+    ]
+  }
+}

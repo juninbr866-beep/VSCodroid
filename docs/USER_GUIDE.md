@@ -81,6 +81,16 @@ Common commands:
 - `Preferences: Open Settings (UI)` -- open the settings editor
 - `Preferences: Open Keyboard Shortcuts` -- view and customize shortcuts
 
+### Local Runner
+
+Run **VSCodroid: Run Local Task** from the Command Palette to choose a VS Code
+task, an npm script, a Makefile target, or a command typed by you. The task
+runs in the current workspace through the normal task terminal, so its output,
+exit status, and cancellation use the same UI as the editor. The status bar
+shows the active run; **VSCodroid: Cancel Local Task** stops it. Runs are
+foreground and one-at-a-time; this is a local task runner, not a background CI
+service.
+
 ### Settings
 
 Open the Command Palette (**Ctrl+Shift+P**) and run `Preferences: Open Settings (UI)`.
@@ -337,11 +347,11 @@ These extensions come bundled with VSCodroid:
 - **Tailwind CSS IntelliSense** -- Tailwind autocomplete
 - **Python** -- Python language support
 
-VSCodroid also ships five of its own, which do not appear in the marketplace:
+VSCodroid also ships six of its own, which do not appear in the marketplace:
 the Get Started walkthrough, the Android bridge (device folders, the device
 browser, SSH keys and storage), **Serve on Network**, the process monitor
-in the status bar, and the editor menu entries that add Select All beside Cut,
-Copy and Paste.
+in the status bar, the editor menu entries that add Select All beside Cut,
+Copy and Paste, and the local workspace runner.
 
 VSCodroid opens on the editor's own dark theme, and it is not the only one installed. Nineteen
 colour themes ship with it: the Dark and Light defaults with their Modern and high-contrast

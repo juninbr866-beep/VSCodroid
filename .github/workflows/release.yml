@@ -421,6 +421,7 @@ jobs:
           node scripts/test-serve-network.js
           node scripts/test-welcome.js
           node scripts/test-input-preview.js
+          node scripts/test-local-runner.js
           node scripts/test-xdg-open.js
 
       - name: Install system dependencies
