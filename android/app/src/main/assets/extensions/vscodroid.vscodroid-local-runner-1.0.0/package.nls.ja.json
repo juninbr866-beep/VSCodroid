@@ -1,0 +1,6 @@
+{
+  "displayName": "Local Runner",
+  "description": "Run project tasks and commands in the current workspace.",
+  "command.run": "Run Local Task",
+  "command.cancel": "Cancel Local Task"
+}
