@@ -13,6 +13,8 @@
   "walkthrough.tools.description": "O VSCodroid já vem com tudo o que você precisa para começar a programar:\n\n$(check) **Node.js** + npm: pronto\n\n$(check) **Python** + pip: pronto\n\n$(check) **Git**: pronto\n\n$(check) **make**: pronto\n\n**Java 17** e **Ruby** são instalados quando você quiser. Toque e segure o ícone do VSCodroid na tela inicial e escolha **Gerenciar toolchains**.\n\n[Entendi](command:vscodroid.welcome.toolsDismissed)",
   "walkthrough.terminal.title": "Um terminal de verdade",
   "walkthrough.terminal.description": "Abra um terminal bash completo com todas as ferramentas incluídas no PATH: ``node``, ``python3``, ``git``, ``npm``.\n\n``node -e 'console.log(\"hi\")'`` imprime ``hi``\n\n``python3 -c 'print(\"hi\")'`` imprime ``hi``\n\n``git init demo`` imprime ``Initialized empty Git repository``\n\n[Abrir um terminal](command:workbench.action.terminal.new)",
+  "walkthrough.runner.title": "Executar seu projeto",
+  "walkthrough.runner.description": "Execute uma tarefa do workspace, script npm, alvo do Makefile ou um comando próprio.\n\n[Executar tarefa local](command:vscodroid.localRunner.run)",
   "walkthrough.extensions.title": "Amplie com mais recursos",
   "walkthrough.extensions.description": "Instale extensões do marketplace Open VSX para suporte a linguagens, temas e ferramentas.\n\nExtensões escritas em JavaScript funcionam. As poucas que trazem um programa compilado para Linux de desktop instalam sem reclamar e depois não fazem nada, sem nenhum erro na tela.\n\n[Ver extensões](command:workbench.view.extensions)"
 }

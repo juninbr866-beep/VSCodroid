@@ -13,6 +13,8 @@
   "walkthrough.tools.description": "VSCodroid bringt alles mit, was Sie zum Programmieren brauchen:\n\n$(check) **Node.js** + npm: bereit\n\n$(check) **Python** + pip: bereit\n\n$(check) **Git**: bereit\n\n$(check) **make**: bereit\n\n**Java 17** und **Ruby** werden bei Bedarf installiert. Halten Sie das VSCodroid-Symbol auf dem Startbildschirm gedrückt und wählen Sie **Toolchains verwalten**.\n\n[Verstanden](command:vscodroid.welcome.toolsDismissed)",
   "walkthrough.terminal.title": "Ein vollwertiges Terminal",
   "walkthrough.terminal.description": "Öffnen Sie ein vollständiges Bash-Terminal, in dem jedes mitgelieferte Werkzeug im PATH liegt: ``node``, ``python3``, ``git``, ``npm``.\n\n``node -e 'console.log(\"hi\")'`` gibt ``hi`` aus\n\n``python3 -c 'print(\"hi\")'`` gibt ``hi`` aus\n\n``git init demo`` gibt ``Initialized empty Git repository`` aus\n\n[Terminal öffnen](command:workbench.action.terminal.new)",
+  "walkthrough.runner.title": "Projekt ausführen",
+  "walkthrough.runner.description": "Run a workspace task, npm script, Makefile target, or your own command.\n\n[Run Local Task](command:vscodroid.localRunner.run)",
   "walkthrough.extensions.title": "Mit weiteren Funktionen erweitern",
   "walkthrough.extensions.description": "Installieren Sie Erweiterungen aus dem Open-VSX-Marktplatz für Sprachunterstützung, Designs und Werkzeuge.\n\nErweiterungen, die in JavaScript geschrieben sind, funktionieren. Die wenigen, die ein für Desktop-Linux übersetztes Programm mitbringen, lassen sich anstandslos installieren und tun dann nichts, ohne Fehlermeldung auf dem Bildschirm.\n\n[Erweiterungen durchsuchen](command:workbench.view.extensions)"
 }

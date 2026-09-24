@@ -13,6 +13,8 @@
   "walkthrough.tools.description": "В VSCodroid есть всё, что нужно, чтобы начать писать код:\n\n$(check) **Node.js** + npm: готово\n\n$(check) **Python** + pip: готово\n\n$(check) **Git**: готово\n\n$(check) **make**: готово\n\n**Java 17** и **Ruby** устанавливаются по требованию. Нажмите и удерживайте значок VSCodroid на главном экране и выберите **Наборы инструментов**.\n\n[Понятно](command:vscodroid.welcome.toolsDismissed)",
   "walkthrough.terminal.title": "Настоящий терминал",
   "walkthrough.terminal.description": "Откройте полноценный терминал bash, в котором каждый встроенный инструмент есть в PATH: ``node``, ``python3``, ``git``, ``npm``.\n\n``node -e 'console.log(\"hi\")'`` выводит ``hi``\n\n``python3 -c 'print(\"hi\")'`` выводит ``hi``\n\n``git init demo`` выводит ``Initialized empty Git repository``\n\n[Открыть терминал](command:workbench.action.terminal.new)",
+  "walkthrough.runner.title": "Запустить проект",
+  "walkthrough.runner.description": "Run a workspace task, npm script, Makefile target, or your own command.\n\n[Run Local Task](command:vscodroid.localRunner.run)",
   "walkthrough.extensions.title": "Добавьте больше возможностей",
   "walkthrough.extensions.description": "Устанавливайте расширения из каталога Open VSX: поддержку языков, темы и инструменты.\n\nРасширения, написанные на JavaScript, работают. Те немногие, что несут в себе программу, собранную для настольного Linux, устанавливаются без возражений, а затем ничего не делают и не показывают ошибку на экране.\n\n[Просмотреть расширения](command:workbench.view.extensions)"
 }

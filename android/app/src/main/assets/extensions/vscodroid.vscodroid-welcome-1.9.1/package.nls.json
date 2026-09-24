@@ -13,6 +13,8 @@
   "walkthrough.tools.description": "VSCodroid comes with everything you need to start coding:\n\n$(check) **Node.js** + npm: ready\n\n$(check) **Python** + pip: ready\n\n$(check) **Git**: ready\n\n$(check) **make**: ready\n\n**Java 17** and **Ruby** install on demand. Touch and hold the VSCodroid icon on your home screen and pick **Manage toolchains**.\n\n[Got It](command:vscodroid.welcome.toolsDismissed)",
   "walkthrough.terminal.title": "A powerful terminal",
   "walkthrough.terminal.description": "Open a full bash terminal with every bundled tool on PATH: ``node``, ``python3``, ``git``, ``npm``.\n\n``node -e 'console.log(\"hi\")'`` prints ``hi``\n\n``python3 -c 'print(\"hi\")'`` prints ``hi``\n\n``git init demo`` prints ``Initialized empty Git repository``\n\n[Open Terminal](command:workbench.action.terminal.new)",
+  "walkthrough.runner.title": "Run your project",
+  "walkthrough.runner.description": "Run a workspace task, npm script, Makefile target, or your own command.\n\n[Run Local Task](command:vscodroid.localRunner.run)",
   "walkthrough.extensions.title": "Extend with more features",
   "walkthrough.extensions.description": "Install extensions from the Open VSX marketplace for language support, themes, and tools.\n\nExtensions written in JavaScript work. The few that bundle a program compiled for desktop Linux can install without complaint and then do nothing, with no error on screen.\n\n[Browse Extensions](command:workbench.view.extensions)"
 }

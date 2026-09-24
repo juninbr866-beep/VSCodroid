@@ -13,6 +13,8 @@
   "walkthrough.tools.description": "VSCodroid, kod yazmaya başlamak için gereken her şeyle birlikte gelir:\n\n$(check) **Node.js** + npm: hazır\n\n$(check) **Python** + pip: hazır\n\n$(check) **Git**: hazır\n\n$(check) **make**: hazır\n\n**Java 17** ve **Ruby** istendiğinde kurulur. Ana ekranda VSCodroid simgesini basılı tutun ve **Araç zincirlerini yönet** seçeneğini seçin.\n\n[Anladım](command:vscodroid.welcome.toolsDismissed)",
   "walkthrough.terminal.title": "Gerçek bir terminal",
   "walkthrough.terminal.description": "Paketteki her aracın PATH üzerinde olduğu tam bir bash terminali açın: ``node``, ``python3``, ``git``, ``npm``.\n\n``node -e 'console.log(\"hi\")'`` ``hi`` yazar\n\n``python3 -c 'print(\"hi\")'`` ``hi`` yazar\n\n``git init demo`` ``Initialized empty Git repository`` yazar\n\n[Terminal aç](command:workbench.action.terminal.new)",
+  "walkthrough.runner.title": "Projeyi çalıştır",
+  "walkthrough.runner.description": "Run a workspace task, npm script, Makefile target, or your own command.\n\n[Run Local Task](command:vscodroid.localRunner.run)",
   "walkthrough.extensions.title": "Daha fazla özellikle genişletin",
   "walkthrough.extensions.description": "Dil desteği, temalar ve araçlar için Open VSX mağazasından uzantılar kurun.\n\nJavaScript ile yazılmış uzantılar çalışır. Masaüstü Linux için derlenmiş bir program taşıyan birkaç tanesi sorunsuzca kurulur, sonra hiçbir şey yapmaz ve ekranda hata da göstermez.\n\n[Uzantılara göz atın](command:workbench.view.extensions)"
 }

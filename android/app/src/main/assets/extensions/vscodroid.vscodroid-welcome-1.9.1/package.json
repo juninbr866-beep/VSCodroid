@@ -2,7 +2,7 @@
   "name": "vscodroid-welcome",
   "displayName": "%displayName%",
   "description": "%description%",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "publisher": "vscodroid",
   "engines": {
     "vscode": "^1.96.0"
@@ -94,6 +94,17 @@
             },
             "completionEvents": [
               "onCommand:workbench.action.terminal.new"
+            ]
+          },
+          {
+            "id": "runner",
+            "title": "%walkthrough.runner.title%",
+            "description": "%walkthrough.runner.description%",
+            "media": {
+              "svg": "media/terminal.svg"
+            },
+            "completionEvents": [
+              "onCommand:vscodroid.localRunner.run"
             ]
           },
           {

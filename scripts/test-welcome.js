@@ -32,6 +32,17 @@ const EXTENSION = path.join(EXTENSION_DIR, 'extension.js');
 const MANIFEST = JSON.parse(
     fs.readFileSync(path.join(EXTENSION_DIR, 'package.json'), 'utf8'),
 );
+const runnerStep = MANIFEST.contributes.walkthroughs[0].steps.find(
+    (step) => step.id === 'runner'
+);
+assert.ok(runnerStep, 'the welcome walkthrough has no local runner step');
+const baseBundle = JSON.parse(
+    fs.readFileSync(path.join(EXTENSION_DIR, 'package.nls.json'), 'utf8')
+);
+assert.match(
+    baseBundle['walkthrough.runner.description'],
+    /command:vscodroid\.localRunner\.run/
+);
 
 // The user's key and the device fact the extension falls back to. Named once
 // because the stub, the cases and the manifest check all have to spell them the

@@ -13,6 +13,8 @@
   "walkthrough.tools.description": "VSCodroid ma wszystko, czego potrzebujesz, aby zacząć pisać kod:\n\n$(check) **Node.js** + npm: gotowe\n\n$(check) **Python** + pip: gotowe\n\n$(check) **Git**: gotowe\n\n$(check) **make**: gotowe\n\n**Java 17** i **Ruby** instalują się na żądanie. Przytrzymaj ikonę VSCodroid na ekranie głównym i wybierz **Zarządzaj narzędziami**.\n\n[Rozumiem](command:vscodroid.welcome.toolsDismissed)",
   "walkthrough.terminal.title": "Prawdziwy terminal",
   "walkthrough.terminal.description": "Otwórz pełny terminal bash, w którym każde dołączone narzędzie jest w PATH: ``node``, ``python3``, ``git``, ``npm``.\n\n``node -e 'console.log(\"hi\")'`` wypisuje ``hi``\n\n``python3 -c 'print(\"hi\")'`` wypisuje ``hi``\n\n``git init demo`` wypisuje ``Initialized empty Git repository``\n\n[Otwórz terminal](command:workbench.action.terminal.new)",
+  "walkthrough.runner.title": "Uruchom projekt",
+  "walkthrough.runner.description": "Run a workspace task, npm script, Makefile target, or your own command.\n\n[Run Local Task](command:vscodroid.localRunner.run)",
   "walkthrough.extensions.title": "Rozbuduj o kolejne funkcje",
   "walkthrough.extensions.description": "Instaluj rozszerzenia z marketplace Open VSX, aby dodać obsługę języków, motywy i narzędzia.\n\nRozszerzenia napisane w JavaScripcie działają. Te nieliczne, które niosą program skompilowany dla Linuksa na komputery, instalują się bez protestu, a potem nic nie robią, bez żadnego błędu na ekranie.\n\n[Przeglądaj rozszerzenia](command:workbench.view.extensions)"
 }
