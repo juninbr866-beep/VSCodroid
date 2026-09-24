@@ -114,6 +114,9 @@ private const val INPUT_PREVIEW_SCRIPT = """
     if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) {
         return element.value || "";
     }
+    if (element.editContext) {
+        return element.editContext.text || "";
+    }
     if (element.isContentEditable) {
         return element.innerText || element.textContent || "";
     }
