@@ -1144,6 +1144,5 @@ jobs:
             artifacts/**/*.zip
             artifacts/**/toolchains.sha256
             artifacts/**/mapping.txt
-            artifacts/**/app-release-symbols.zip
             artifacts/checksums.sha256
             artifacts/build-manifest.txt
